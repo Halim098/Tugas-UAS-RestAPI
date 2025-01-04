@@ -2,7 +2,7 @@ import os
 
 class Config:
     # Ambil URL dari variabel lingkungan
-    SQLALCHEMY_DATABASE_URI = 'postgresql://postgres.vkzieerrqnszexfbckld:AloVcVJEHnMql74B@aws-0-us-west-1.pooler.supabase.com:6543/postgres'
+    SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:AloVcVJEHnMql74B@db.vkzieerrqnszexfbckld.supabase.co:5432/postgres'
     
     if SQLALCHEMY_DATABASE_URI is None:
         raise ValueError("DATABASE_URL environment variable not set")
