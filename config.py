@@ -1,12 +1,10 @@
-import os
-
 DB_HOST = 'db.mlvjbuusruadndqlhyop.supabase.co'
 DB_USER = 'postgres'
 DB_PASSWORD = 'mXK8f5R32A3awd4W'
 DB_NAME = 'postgres'
 DB_PORT = '5432'
 
-SECRET_KEY='12g3h1b2n3b12jhv3h1b2kh3b12bkKBKHBKJHb'
+SECRET_KEY = '12g3h1b2n3b12jhv3h1b2kh3b12bkKBKHBKJHb'
 
 
 class Config:

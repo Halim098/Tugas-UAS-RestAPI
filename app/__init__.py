@@ -6,13 +6,13 @@ from config import Config
 
 def create_app():
     app = Flask(__name__)
-    app.config.from_object(Config)  # Load configuration from config.py
+    app.config.from_object(Config)  # Gunakan konfigurasi dari config.py
 
     db.init_app(app)
     JWTManager(app)
     app.register_blueprint(api, url_prefix='/api')
 
     with app.app_context():
-        db.create_all()
+        db.create_all()  # Pastikan tabel dibuat di database
 
     return app
