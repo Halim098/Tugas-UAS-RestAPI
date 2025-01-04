@@ -1,4 +1,16 @@
+import os
+from sqlalchemy.pool import QueuePool
+
 class Config:
-    SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:mXK8f5R32A3awd4W@db.mlvjbuusruadndqlhyop.supabase.co:5432/postgres?sslmode=require'
+    # Menggunakan variabel lingkungan untuk koneksi database
+    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', 'postgresql://username:password@host:port/database?sslmode=require')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    SECRET_KEY = '12g3h1b2n3b12jhv3h1b2kh3b12bkKBKHBKJHb'
+    SECRET_KEY = os.getenv('SECRET_KEY', 'default_secret_key')
+
+    # Konfigurasi pooling untuk mengelola koneksi
+    SQLALCHEMY_ENGINE_OPTIONS = {
+        "pool_size": 5,
+        "max_overflow": 10,
+        "pool_timeout": 30,
+        "poolclass": QueuePool,
+    }
