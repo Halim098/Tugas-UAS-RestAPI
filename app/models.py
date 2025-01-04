@@ -14,7 +14,7 @@ class Book(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(120), nullable=False)
     author = db.Column(db.String(120), nullable=False)
-    price = db.Column(db.Numeric(10, 2), nullable=False)
+    price = db.Column(db.Integer, nullable=False)
 
 class Order(db.Model):
     __tablename__ = 'orders'

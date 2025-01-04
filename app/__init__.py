@@ -6,13 +6,10 @@ from config import Config
 
 def create_app():
     app = Flask(__name__)
-    app.config.from_object(Config)
+    app.config.from_object(Config)  # Gunakan konfigurasi dari config.py
 
-    # Initialize extensions
     db.init_app(app)
     JWTManager(app)
-
-    # Register blueprints
     app.register_blueprint(api, url_prefix='/api')
-
+    
     return app

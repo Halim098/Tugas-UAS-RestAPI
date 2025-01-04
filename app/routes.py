@@ -2,7 +2,7 @@ from flask import Blueprint, request, jsonify
 from app.models import db, User, Book, Order
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 from werkzeug.security import generate_password_hash, check_password_hash
-from sqlalchemy import create_engine
+import os
 
 api = Blueprint('api', __name__)
 
@@ -117,12 +117,11 @@ def create_order():
 
 @api.route('/test-db', methods=['GET'])
 def test_db():
+    from sqlalchemy import create_engine
     try:
-        engine = create_engine(
-            'postgresql://username:password@host:port/database?sslmode=require'
-        )
+        engine = create_engine(os.getenv('DATABASE_URL'))
         connection = engine.connect()
         connection.close()
-        return jsonify({"message": "Database connection successful!"}), 200
+        return {"message": "Database connection successful!"}, 200
     except Exception as e:
-        return jsonify({"error": str(e)}), 500
+        return {"error": str(e)}, 500
