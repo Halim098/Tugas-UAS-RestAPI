@@ -11,8 +11,5 @@ def create_app():
     db.init_app(app)
     JWTManager(app)
     app.register_blueprint(api, url_prefix='/api')
-
-    with app.app_context():
-        db.create_all()  # Pastikan tabel dibuat di database
-
+    
     return app
