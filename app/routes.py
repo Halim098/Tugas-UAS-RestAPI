@@ -119,7 +119,7 @@ def test_db():
     from sqlalchemy import create_engine
     try:
         engine = create_engine(
-            "postgresql://postgres:mXK8f5R32A3awd4W@db.mlvjbuusruadndqlhyop.supabase.co:5432/postgres?sslmode=require"
+            'postgresql://postgres:mXK8f5R32A3awd4W@db.mlvjbuusruadndqlhyop.supabase.co:5432/postgres?sslmode=require'
         )
         connection = engine.connect()
         connection.close()
