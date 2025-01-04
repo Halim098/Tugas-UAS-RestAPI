@@ -2,7 +2,6 @@ from flask import Blueprint, request, jsonify
 from app.models import db, User, Book, Order
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 from werkzeug.security import generate_password_hash, check_password_hash
-from config import DB_USER, DB_PASSWORD, DB_HOST, DB_PORT, DB_NAME
 
 api = Blueprint('api', __name__)
 
@@ -120,7 +119,7 @@ def test_db():
     from sqlalchemy import create_engine
     try:
         engine = create_engine(
-            f"postgresql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
+            "postgresql://postgres:mXK8f5R32A3awd4W@db.mlvjbuusruadndqlhyop.supabase.co:5432/postgres?sslmode=require"
         )
         connection = engine.connect()
         connection.close()
