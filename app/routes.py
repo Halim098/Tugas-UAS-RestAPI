@@ -114,3 +114,16 @@ def create_order():
     db.session.commit()
 
     return jsonify({"message": "Order created successfully"}), 201
+
+@api.route('/test-db', methods=['GET'])
+def test_db():
+    from sqlalchemy import create_engine
+    try:
+        engine = create_engine(
+            f"postgresql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
+        )
+        connection = engine.connect()
+        connection.close()
+        return {"message": "Database connection successful!"}, 200
+    except Exception as e:
+        return {"error": str(e)}, 500
