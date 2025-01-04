@@ -119,7 +119,7 @@ def create_order():
 def test_db():
     from sqlalchemy import create_engine
     try:
-        engine = create_engine(os.getenv('DATABASE_URL'))
+        engine = create_engine('postgresql://postgres:AloVcVJEHnMql74B@db.vkzieerrqnszexfbckld.supabase.co:5432/postgres')
         connection = engine.connect()
         connection.close()
         return {"message": "Database connection successful!"}, 200
