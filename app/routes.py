@@ -2,7 +2,6 @@ from flask import Blueprint, request, jsonify
 from app.models import db, User, Book, Order
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 from werkzeug.security import generate_password_hash, check_password_hash
-import os
 
 api = Blueprint('api', __name__)
 
@@ -114,14 +113,3 @@ def create_order():
     db.session.commit()
 
     return jsonify({"message": "Order created successfully"}), 201
-
-@api.route('/test-db', methods=['GET'])
-def test_db():
-    from sqlalchemy import create_engine
-    try:
-        engine = create_engine('postgresql://postgres:AloVcVJEHnMql74B@db.vkzieerrqnszexfbckld.supabase.co:5432/postgres')
-        connection = engine.connect()
-        connection.close()
-        return {"message": "Database connection successful!"}, 200
-    except Exception as e:
-        return {"error": str(e)}, 500
