@@ -2,7 +2,7 @@ import os
 
 class Config:
     # Ambil URL dari variabel lingkungan
-    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', None)
+    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', 'postgresql://postgres:mXK8f5R32A3awd4W@db.mlvjbuusruadndqlhyop.supabase.co:5432/postgres?sslmode=require')
     
     if SQLALCHEMY_DATABASE_URI is None:
         raise ValueError("DATABASE_URL environment variable not set")
@@ -10,7 +10,7 @@ class Config:
     print(f"Using database URL: {SQLALCHEMY_DATABASE_URI}")  # Debugging untuk memastikan URL yang benar
 
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    SECRET_KEY = os.getenv('SECRET_KEY', 'default_secret_key')
+    SECRET_KEY = os.getenv('SECRET_KEY', '12g3h1b2n3b12jhv3h1b2kh3b12bkKBKHBKJHb')
 
     SQLALCHEMY_ENGINE_OPTIONS = {
         "pool_size": 5,
